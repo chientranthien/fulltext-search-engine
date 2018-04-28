@@ -11,8 +11,10 @@ public class StopWordFilterTest {
                 "we", "teach", "them", "the", "idea", "that", "aloneness", "is", "a", "privation"};
 
 
-        TokenFilter tokenFilter = new StopWordFilter();
-        String[] filteredTokens = tokenFilter.filter(inputs);
+        LowercaseFilter lowercaseFilter = new LowercaseFilter();
+        TokenFilter stopWordFilter = new StopWordFilter();
+        inputs=lowercaseFilter.filter(inputs);
+        String[] filteredTokens = stopWordFilter.filter(inputs);
         Assertions.assertThat(inputs).doesNotContain(StopWordFilter.STOP_LIST);
     }
 }

@@ -23,7 +23,7 @@ public class StopWordFilter implements TokenFilter {
     public String[] filter(String[] tokens) {
         List<String> filteredTokens = new ArrayList(tokens.length);
         for (String token : tokens) {
-            if (!STOP_WORDS.containsKey(token)) {
+            if (!STOP_WORDS.containsValue(token)) {
                 filteredTokens.add(token);
             }
         }
