@@ -27,6 +27,7 @@ public class StopWordFilter implements TokenFilter {
                 filteredTokens.add(token);
             }
         }
+
         return filteredTokens.toArray(new String[filteredTokens.size()]);
     }
 }
