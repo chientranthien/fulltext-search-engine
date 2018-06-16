@@ -1,4 +1,4 @@
-package com.company.search.analysis.filter;
+package com.chientt.search.analysis.filter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.company.search.analysis.filter;
+package com.chientt.search.analysis.filter;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.company.search.analysis.filter;
+package com.chientt.search.analysis.filter;
 
 public class LowercaseFilter implements TokenFilter {
     public String[] filter(String[] tokens) {

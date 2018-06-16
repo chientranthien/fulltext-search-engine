@@ -1,4 +1,4 @@
-package com.company.search.analysis.tokenizer;
+package com.chientt.search.analysis.tokenizer;
 
 
 public class StandardTokenizer implements Tokenizer {
