@@ -7,14 +7,15 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
 
-
 public class IndexWriterImpl implements IndexWriter {
+
     private String pathStr;
 
     public IndexWriterImpl(String pathStr) {
         this.pathStr = pathStr;
     }
 
+    @Override
     public long write(IndexData indexData) {
         long offset = 0;
         String encodedIndexData = DataUtils.encodeIndexData(indexData);

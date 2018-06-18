@@ -1,5 +1,6 @@
 package com.chientt.search.storage.util;
 
+import static com.chientt.search.constant.GlobalConstant.DATA_SEPARATED_CHAR;
 import com.chientt.search.storage.entity.IndexData;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
 import static com.chientt.search.constant.GlobalConstant.ENCODED_INDEX_POS;
 import static com.chientt.search.constant.GlobalConstant.ENCODED_OFFSETS_POS;
 import static com.chientt.search.constant.GlobalConstant.INDEX_SEPARATED_CHAR;
+import com.chientt.search.storage.entity.Data;
 
 public class DataUtils {
 
@@ -56,5 +58,18 @@ public class DataUtils {
         }
 
         return offsets;
+    }
+
+    public static String encodeData(Data data) {
+        String encodedId = encode(data.get_id());
+        String encodedvalue = encode(data.getValue());
+        return encodedId + DATA_SEPARATED_CHAR + encodedvalue;
+    }
+
+    public static Data decodeData(String line) {
+        String[] splitted = line.split(DATA_SEPARATED_CHAR);
+        String decodedId = decode(splitted[0]);
+        String decodedValue = decode(splitted[1]);
+        return new Data(decodedId, decodedValue);
     }
 }

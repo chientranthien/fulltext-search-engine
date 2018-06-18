@@ -3,11 +3,16 @@ package com.chientt.search.storage.entity;
 import java.util.UUID;
 
 public class BaseData {
+
     private String _id;
 
     public BaseData() {
         UUID uuid = UUID.randomUUID();
-        _id=uuid.toString();
+        _id = uuid.toString();
+    }
+
+    public BaseData(String _id) {
+        this._id = _id;
     }
 
     public String get_id() {
