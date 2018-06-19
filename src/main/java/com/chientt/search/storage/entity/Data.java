@@ -7,6 +7,10 @@ public class Data extends BaseData {
     public Data() {
     }
 
+    public Data(String value) {
+        this.value = value;
+    }
+
     public Data(String _id, String value) {
         super(_id);
         this.value = value;
