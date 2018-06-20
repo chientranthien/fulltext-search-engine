@@ -6,7 +6,6 @@ import com.chientt.search.analysis.tokenizer.StandardTokenizer;
 import com.chientt.search.analysis.tokenizer.Tokenizer;
 import com.chientt.search.storage.entity.Data;
 import com.chientt.search.storage.entity.IndexData;
-import com.chientt.search.storage.reader.IndexReader;
 import com.chientt.search.storage.writer.DataWriter;
 import com.chientt.search.storage.writer.DataWriterImpl;
 import com.chientt.search.storage.writer.IndexWriter;
