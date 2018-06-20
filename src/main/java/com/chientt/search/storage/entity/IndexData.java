@@ -1,17 +1,25 @@
 package com.chientt.search.storage.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class IndexData {
+
     private String index;
-    private List<Long> offset;
+    private List<Long> offsets;
 
     public IndexData() {
     }
 
+    public IndexData(String index, long offset) {
+        this.index = index;
+        this.offsets = new ArrayList<>();
+        this.offsets.add(offset);
+    }
+
     public IndexData(String index, List<Long> offset) {
         this.index = index;
-        this.offset = offset;
+        this.offsets = offset;
     }
 
     public String getIndex() {
@@ -23,10 +31,14 @@ public class IndexData {
     }
 
     public List<Long> getOffset() {
-        return offset;
+        return offsets;
     }
 
     public void setOffset(List<Long> offset) {
-        this.offset = offset;
+        this.offsets = offset;
+    }
+
+    public void addOffset(long offset) {
+        this.offsets.add(offset);
     }
 }
