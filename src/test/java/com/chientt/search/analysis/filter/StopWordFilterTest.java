@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class StopWordFilterTest {
     @Test
-    public void test1() {
+    public void shouldRemoveStopWords() {
         String[] inputs = new String[]{
                 "By", "sending", "children", "to", "their", "rooms", "as", "punishment",
                 "we", "teach", "them", "the", "idea", "that", "aloneness", "is", "a", "privation"};

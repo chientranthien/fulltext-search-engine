@@ -8,7 +8,7 @@ public class LowercaseFilterTests {
     TokenFilter tokenFilter = new LowercaseFilter();
 
     @Test
-    public void test1() {
+    public void shouldReturnLowercases() {
         String[] inputs = new String[]{"By", "SENDING", "CHILDREN", "To", "Their", "ROOMS", "AS", "PUNISHMENT",
                 "We", "teaCH", "thEM", "thE", "IDEa", "THAt", "ALONENESS", "is", "a", "PRIVATion"};
 

@@ -35,7 +35,7 @@ public class IndexReaderImpl implements IndexReader {
             List<String> lines = Files.readAllLines(path);
             for (String line : lines) {
                 IndexData indexData = DataUtils.decodeIndexData(line);
-                result.put(line, indexData);
+                result.put(indexData.getIndex(), indexData);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
