@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
 
 /**
  *
@@ -30,7 +31,7 @@ public class DataWriterImpl implements DataWriter {
             }
             offset = Files.size(path);
             String encodedData = DataUtils.encodeData(data);
-            Files.write(path, encodedData.getBytes(), StandardOpenOption.APPEND);
+            Files.write(path, Arrays.asList(encodedData), StandardOpenOption.APPEND);
         } catch (IOException ex) {
             ex.printStackTrace();
         }

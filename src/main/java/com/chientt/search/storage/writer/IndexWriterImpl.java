@@ -45,6 +45,9 @@ public class IndexWriterImpl implements IndexWriter {
         }
         try {
             Path path = Paths.get(pathStr);
+            if (!Files.exists(path)) {
+                Files.createFile(path);
+            }
             offset = Files.size(path);
             Files.write(path, lines);
         } catch (IOException e) {

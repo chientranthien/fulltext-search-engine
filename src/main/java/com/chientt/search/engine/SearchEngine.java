@@ -6,13 +6,17 @@ import com.chientt.search.analysis.tokenizer.StandardTokenizer;
 import com.chientt.search.analysis.tokenizer.Tokenizer;
 import com.chientt.search.storage.entity.Data;
 import com.chientt.search.storage.entity.IndexData;
+import com.chientt.search.storage.reader.DataReader;
+import com.chientt.search.storage.reader.DataReaderImpl;
 import com.chientt.search.storage.reader.IndexReader;
 import com.chientt.search.storage.reader.IndexReaderImpl;
 import com.chientt.search.storage.writer.DataWriter;
 import com.chientt.search.storage.writer.DataWriterImpl;
 import com.chientt.search.storage.writer.IndexWriter;
 import com.chientt.search.storage.writer.IndexWriterImpl;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  *
@@ -24,6 +28,7 @@ public class SearchEngine {
     TokenFilter tokenFilter = new LowercaseFilter();
     IndexWriter indexWriter = new IndexWriterImpl("index.db");
     DataWriter dataWriter = new DataWriterImpl("data.db");
+    DataReader dataReader = new DataReaderImpl("data.db");
     IndexReader indexReader = new IndexReaderImpl("index.db");
     private Map<String, IndexData> allIndexes = indexReader.readAll();
 
@@ -47,5 +52,22 @@ public class SearchEngine {
         }
 
         indexWriter.write(allIndexes);
+    }
+
+    public Set<Data> search(String query) {
+        Set<Data> result = new HashSet<>();
+        String[] tokens = tokenizer.extract(query);
+        tokens = tokenFilter.filter(tokens);
+        for (String token : tokens) {
+            IndexData indexData = allIndexes.get(token);
+            if (indexData == null) {
+                continue;
+            }
+            for (Long offset : indexData.getOffset()) {
+                Data data = dataReader.read(offset);
+                result.add(data);
+            }
+        }
+        return result;
     }
 }

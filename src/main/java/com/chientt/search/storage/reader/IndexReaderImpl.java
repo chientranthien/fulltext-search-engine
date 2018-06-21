@@ -26,10 +26,11 @@ public class IndexReaderImpl implements IndexReader {
     @Override
     public Map<String, IndexData> readAll() {
         Path path = Paths.get(pathStr);
-        if (!Files.exists(path)) {
-            return Collections.EMPTY_MAP;
-        }
         Map<String, IndexData> result = new HashMap<>();
+
+        if (!Files.exists(path)) {
+            return result;
+        }
         try {
             List<String> lines = Files.readAllLines(path);
             for (String line : lines) {

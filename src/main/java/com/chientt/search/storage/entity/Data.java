@@ -16,6 +16,35 @@ public class Data extends BaseData {
         this.value = value;
     }
 
+    @Override
+    public String toString() {
+        return "Data{" + "value=" + value + '}';
+    }
+
+    @Override
+    public boolean equals(Object that) {
+        if (that == null) {
+            return false;
+        }
+        if (this == that) {
+            return true;
+        }
+        if (that instanceof Data) {
+            return this.equals((Data) that);
+        }
+        return false;
+    }
+
+    public boolean equals(Data that) {
+        if (that == null) {
+            return false;
+        }
+        if (!this.get_id().equals(that.get_id())) {
+            return false;
+        }
+        return true;
+    }
+
     public String getValue() {
         return value;
     }

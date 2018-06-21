@@ -44,17 +44,18 @@ public class DataUtils {
     public static IndexData decodeIndexData(String encodedIndexData) {
         String[] splitted = encodedIndexData.split(INDEX_SEPARATED_CHAR);
         String index = decode(splitted[ENCODED_INDEX_POS]);
-        String encodedOffsets = decode(splitted[ENCODED_OFFSETS_POS]);
-        List<Long> offsets = decodeOffsets(encodedOffsets);
+        String decodedOffsets = decode(splitted[ENCODED_OFFSETS_POS]);
+        List<Long> offsets = extractOffsets(decodedOffsets);
         return new IndexData(index, offsets);
     }
 
-    private static List<Long> decodeOffsets(String encodedOffsets) {
-        String offsetsAsStr = decode(encodedOffsets);
-        String[] splittedOffsetsStr = offsetsAsStr.split(INDEX_SEPARATED_CHAR);
+    private static List<Long> extractOffsets(String decodedOffsets) {
+        String[] splitted = decodedOffsets.split(INDEX_SEPARATED_CHAR);
         List<Long> offsets = new ArrayList<>();
-        for (String offset : splittedOffsetsStr) {
-            offsets.add(Long.valueOf(offset));
+        for (String offset : splitted) {
+            if (!offset.isEmpty()) {
+                offsets.add(Long.valueOf(offset));
+            }
         }
 
         return offsets;
